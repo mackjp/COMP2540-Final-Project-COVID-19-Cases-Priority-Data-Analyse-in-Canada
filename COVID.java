@@ -126,7 +126,9 @@ public class COVID{
                 }
             }
         }
-
+        
+        //now we must calculate the number of cases/deaths per day as each entry in the csv is total to date
+        
         for(int i = ON.size()-1;i > 0;i--)
         {
             EntryADT up = new EntryADT(ON.get(i).getDate(), ON.get(i).getCase()-ON.get(i-1).getCase(), ON.get(i).getDeath()-ON.get(i-1).getDeath());
