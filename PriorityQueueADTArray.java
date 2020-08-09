@@ -111,7 +111,7 @@ public class PriorityQueueADTArray
      * @brief removes and returns the entry at the top of the queue (the highest priority)
      * @return the top entry
      */
-    public EntryADT dequeue()
+    public EntryADTQueue dequeue()
     {
         if(this.isEmpty())// if queue is empty there is nothing to return
         {
@@ -119,7 +119,7 @@ public class PriorityQueueADTArray
         }
         else
         {
-            EntryADT ret = data[0];// store first element 
+            EntryADTQueue ret = data[0];// store first element 
             for(int i = 0;i < this.size-1;i++)
             {
                 data[i] = data[i+1];// shift everything forward
@@ -144,12 +144,12 @@ public class PriorityQueueADTArray
      * @brief shows the first entry of the queue without changing the queue
      * @return the value of the entry
      */
-    public String peek()
+    public EntryADTQueue peek()
     {
         if (isEmpty())
-            return -1;
+            return null;
         else
-            return data[0].getValue();
+            return data[0];
     }
     /**
      * display
