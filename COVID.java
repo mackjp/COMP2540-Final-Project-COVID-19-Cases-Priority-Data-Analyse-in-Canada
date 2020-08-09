@@ -29,7 +29,7 @@ public class COVID{
 
 
         // PriorityQueue<DeathsQueue> DON = new PriorityQueue<>();
-       
+
         // PriorityQueue<DeathsQueue> DQB = new PriorityQueue<>();
         // PriorityQueue<DeathsQueue> DBC = new PriorityQueue<>();
         // PriorityQueue<DeathsQueue> DAB = new PriorityQueue<>();
@@ -85,12 +85,12 @@ public class COVID{
                 else
                 {
 
-                
+
                     // use comma as delimeter
                     String[] country = line.split(cvsSplitBy);
 
-                   
-                    
+
+
                     switch(Integer.parseInt(country[0]))
                     {
                         case 35://ontario
@@ -168,9 +168,9 @@ public class COVID{
                 }
             }
         }
-        
+
         //now we must calculate the number of cases/deaths per day as each entry in the csv is total to date
-        
+
         for(int i = ON.size()-1;i > 0;i--)
         {
             EntryADT up = new EntryADT(ON.get(i).getDate(), ON.get(i).getCase()-ON.get(i-1).getCase(), ON.get(i).getDeath()-ON.get(i-1).getDeath());
@@ -254,7 +254,7 @@ public class COVID{
         // for(int i = QB.size()-1;i > 0;i--) {
         //     CQB.add(new CasesQueue(QB.get(i).getDate(), QB.get(i).getCase()));
         // }
-        
+
         // System.out.println("Done for the QB priority queues for Cases");
 
 
@@ -262,7 +262,7 @@ public class COVID{
         //     CBC.add(new CasesQueue(BC.get(i).getDate(), BC.get(i).getCase()));
         // }
         // System.out.println("Done for the BC priority queues for Cases");
-        
+
 
         // for(int i = AB.size()-1;i > 0;i--) {
         //     CAB.add(new CasesQueue(AB.get(i).getDate(), AB.get(i).getCase()));
@@ -270,26 +270,26 @@ public class COVID{
 
         // System.out.println("Done for the AB priority queues for Cases");
 
-        
+
         // for(int i = SK.size()-1;i > 0;i--) {
         //     CSK.add(new CasesQueue(SK.get(i).getDate(), SK.get(i).getCase()));
         // }
 
         // System.out.println("Done for the SK priority queues for Cases");
 
-        
+
         // for(int i = MT.size()-1;i > 0;i--) {
         //     CMT.add(new CasesQueue(MT.get(i).getDate(), MT.get(i).getCase()));
         // }
 
         // System.out.println("Done for the MT priority queues for Cases");
 
-        
+
         // for(int i = NB.size()-1;i > 0;i--) {
         //     CNB.add(new CasesQueue(NB.get(i).getDate(), NB.get(i).getCase()));
         // }
         // System.out.println("Done for the NB priority queues for Cases");
-        
+
 
 
         // for(int i = NF.size()-1;i > 0;i--) {
@@ -299,14 +299,14 @@ public class COVID{
         // System.out.println("Done for the NF priority queues for Cases");
 
 
-        
+
         // for(int i = PE.size()-1;i > 0;i--)  {
         //     CPE.add(new CasesQueue(PE.get(i).getDate(), PE.get(i).getCase()));
         // }
 
         // System.out.println("Done for the PE priority queues for Cases");
 
-        
+
         // for(int i = NW.size()-1;i > 0;i--) {
         //     CNW.add(new CasesQueue(NW.get(i).getDate(), NW.get(i).getCase()));
         // }
@@ -314,18 +314,18 @@ public class COVID{
         // System.out.println("Done for the NW priority queues for Cases");
 
 
-        
+
         // for(int i = NV.size()-1;i > 0;i--) {
         //     CNV.add(new CasesQueue(NV.get(i).getDate(), NV.get(i).getCase()));
         // }
 
         // System.out.println("Done for the NV priority queues for Cases");
 
-        
+
         // for(int i = YK.size()-1;i > 0;i--) {
         //     CYK.add(new CasesQueue(YK.get(i).getDate(), YK.get(i).getCase()));
         // }
-        
+
 
         // System.out.println("Done for the YK priority queues for Cases");
 
@@ -337,7 +337,7 @@ public class COVID{
 
         // System.out.println("Done for the NS priority queues for Cases");
 
-        
+
         // for(int i = CAN.size()-1;i > 0;i--) {
         //     CCAN.add(new CasesQueue(CAN.get(i).getDate(), CAN.get(i).getCase()));
         // }
@@ -351,6 +351,58 @@ public class COVID{
         PriorityQueueADTArray DON = new PriorityQueueADTArray(ON.size());
         for(int i = ON.size()-1;i > 0;i--) {
             DON.enqueue( ON.get(i).getDeath(),ON.get(i).getDate());
+        }
+        PriorityQueueADTArray DQB = new PriorityQueueADTArray(QB.size());
+        for(int i = QB.size()-1;i > 0;i--) {
+            DQB.enqueue( QB.get(i).getDeath(),QB.get(i).getDate());
+        }
+        PriorityQueueADTArray DBC = new PriorityQueueADTArray(BC.size());
+        for(int i = BC.size()-1;i > 0;i--) {
+            DBC.enqueue( BC.get(i).getDeath(),BC.get(i).getDate());
+        }
+        PriorityQueueADTArray DAB = new PriorityQueueADTArray(AB.size());
+        for(int i = AB.size()-1;i > 0;i--) {
+            DAB.enqueue( AB.get(i).getDeath(),AB.get(i).getDate());
+        }
+        PriorityQueueADTArray DSK = new PriorityQueueADTArray(SK.size());
+        for(int i = SK.size()-1;i > 0;i--) {
+            DSK.enqueue( SK.get(i).getDeath(),SK.get(i).getDate());
+        }
+        PriorityQueueADTArray DMT = new PriorityQueueADTArray(MT.size());
+        for(int i = MT.size()-1;i > 0;i--) {
+            DMT.enqueue( MT.get(i).getDeath(),MT.get(i).getDate());
+        }
+        PriorityQueueADTArray DNB = new PriorityQueueADTArray(NB.size());
+        for(int i = ON.size()-1;i > 0;i--) {
+            DNB.enqueue( NB.get(i).getDeath(),NB.get(i).getDate());
+        }
+        PriorityQueueADTArray DNF = new PriorityQueueADTArray(NF.size());
+        for(int i = ON.size()-1;i > 0;i--) {
+            DNF.enqueue( NF.get(i).getDeath(),NF.get(i).getDate());
+        }
+        PriorityQueueADTArray DPE = new PriorityQueueADTArray(PE.size());
+        for(int i = ON.size()-1;i > 0;i--) {
+            DPE.enqueue( PE.get(i).getDeath(),PE.get(i).getDate());
+        }
+        PriorityQueueADTArray DNW = new PriorityQueueADTArray(NW.size());
+        for(int i = NW.size()-1;i > 0;i--) {
+            DNW.enqueue( NW.get(i).getDeath(),NW.get(i).getDate());
+        }
+        PriorityQueueADTArray DNV = new PriorityQueueADTArray(NV.size());
+        for(int i = NV.size()-1;i > 0;i--) {
+            DNV.enqueue( NV.get(i).getDeath(),NV.get(i).getDate());
+        }
+        PriorityQueueADTArray DYK = new PriorityQueueADTArray(YK.size());
+        for(int i = YK.size()-1;i > 0;i--) {
+            DYK.enqueue( YK.get(i).getDeath(),YK.get(i).getDate());
+        }
+        PriorityQueueADTArray DNS = new PriorityQueueADTArray(NS.size());
+        for(int i = NS.size()-1;i > 0;i--) {
+            DNS.enqueue( NS.get(i).getDeath(),NS.get(i).getDate());
+        }
+        PriorityQueueADTArray DCAN = new PriorityQueueADTArray(CAN.size());
+        for(int i = CAN.size()-1;i > 0;i--) {
+            DCAN.enqueue( CAN.get(i).getDeath(),CAN.get(i).getDate());
         }
 
         //  System.out.println("Done for the CAN priority queues for Deaths");
