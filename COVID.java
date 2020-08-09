@@ -373,15 +373,15 @@ public class COVID{
             DMT.enqueue( MT.get(i).getDeath(),MT.get(i).getDate());
         }
         PriorityQueueADTArray DNB = new PriorityQueueADTArray(NB.size());
-        for(int i = ON.size()-1;i > 0;i--) {
+        for(int i = NB.size()-1;i > 0;i--) {
             DNB.enqueue( NB.get(i).getDeath(),NB.get(i).getDate());
         }
         PriorityQueueADTArray DNF = new PriorityQueueADTArray(NF.size());
-        for(int i = ON.size()-1;i > 0;i--) {
+        for(int i = NF.size()-1;i > 0;i--) {
             DNF.enqueue( NF.get(i).getDeath(),NF.get(i).getDate());
         }
         PriorityQueueADTArray DPE = new PriorityQueueADTArray(PE.size());
-        for(int i = ON.size()-1;i > 0;i--) {
+        for(int i = PE.size()-1;i > 0;i--) {
             DPE.enqueue( PE.get(i).getDeath(),PE.get(i).getDate());
         }
         PriorityQueueADTArray DNW = new PriorityQueueADTArray(NW.size());
@@ -403,6 +403,64 @@ public class COVID{
         PriorityQueueADTArray DCAN = new PriorityQueueADTArray(CAN.size());
         for(int i = CAN.size()-1;i > 0;i--) {
             DCAN.enqueue( CAN.get(i).getDeath(),CAN.get(i).getDate());
+        }
+        
+        
+        PriorityQueueADTArray CON = new PriorityQueueADTArray(ON.size());
+        for(int i = ON.size()-1;i > 0;i--) {
+            CON.enqueue( ON.get(i).getDeath(),ON.get(i).getDate());
+        }
+        PriorityQueueADTArray CQB = new PriorityQueueADTArray(QB.size());
+        for(int i = QB.size()-1;i > 0;i--) {
+            CQB.enqueue( QB.get(i).getDeath(),QB.get(i).getDate());
+        }
+        PriorityQueueADTArray CBC = new PriorityQueueADTArray(BC.size());
+        for(int i = BC.size()-1;i > 0;i--) {
+            CBC.enqueue( BC.get(i).getDeath(),BC.get(i).getDate());
+        }
+        PriorityQueueADTArray CAB = new PriorityQueueADTArray(AB.size());
+        for(int i = AB.size()-1;i > 0;i--) {
+            CAB.enqueue( AB.get(i).getDeath(),AB.get(i).getDate());
+        }
+        PriorityQueueADTArray CSK = new PriorityQueueADTArray(SK.size());
+        for(int i = SK.size()-1;i > 0;i--) {
+            CSK.enqueue( SK.get(i).getDeath(),SK.get(i).getDate());
+        }
+        PriorityQueueADTArray CMT = new PriorityQueueADTArray(MT.size());
+        for(int i = MT.size()-1;i > 0;i--) {
+            CMT.enqueue( MT.get(i).getDeath(),MT.get(i).getDate());
+        }
+        PriorityQueueADTArray CNB = new PriorityQueueADTArray(NB.size());
+        for(int i = NB.size()-1;i > 0;i--) {
+            CNB.enqueue( NB.get(i).getDeath(),NB.get(i).getDate());
+        }
+        PriorityQueueADTArray CNF = new PriorityQueueADTArray(NF.size());
+        for(int i = NF.size()-1;i > 0;i--) {
+            CNF.enqueue( NF.get(i).getDeath(),NF.get(i).getDate());
+        }
+        PriorityQueueADTArray CPE = new PriorityQueueADTArray(PE.size());
+        for(int i = PE.size()-1;i > 0;i--) {
+            CPE.enqueue( PE.get(i).getDeath(),PE.get(i).getDate());
+        }
+        PriorityQueueADTArray CNW = new PriorityQueueADTArray(NW.size());
+        for(int i = NW.size()-1;i > 0;i--) {
+            CNW.enqueue( NW.get(i).getDeath(),NW.get(i).getDate());
+        }
+        PriorityQueueADTArray CNV = new PriorityQueueADTArray(NV.size());
+        for(int i = NV.size()-1;i > 0;i--) {
+            CNV.enqueue( NV.get(i).getDeath(),NV.get(i).getDate());
+        }
+        PriorityQueueADTArray CYK = new PriorityQueueADTArray(YK.size());
+        for(int i = YK.size()-1;i > 0;i--) {
+            CYK.enqueue( YK.get(i).getDeath(),YK.get(i).getDate());
+        }
+        PriorityQueueADTArray CNS = new PriorityQueueADTArray(NS.size());
+        for(int i = NS.size()-1;i > 0;i--) {
+            CNS.enqueue( NS.get(i).getDeath(),NS.get(i).getDate());
+        }
+        PriorityQueueADTArray CCAN = new PriorityQueueADTArray(CAN.size());
+        for(int i = CAN.size()-1;i > 0;i--) {
+            CCAN.enqueue( CAN.get(i).getDeath(),CAN.get(i).getDate());
         }
 
         //  System.out.println("Done for the CAN priority queues for Deaths");
