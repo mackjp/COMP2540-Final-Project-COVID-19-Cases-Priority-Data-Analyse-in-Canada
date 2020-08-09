@@ -2,8 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.io.*;
 
 
 public class COVID{
@@ -29,7 +30,7 @@ public class COVID{
 
 
         // PriorityQueue<DeathsQueue> DON = new PriorityQueue<>();
-
+       
         // PriorityQueue<DeathsQueue> DQB = new PriorityQueue<>();
         // PriorityQueue<DeathsQueue> DBC = new PriorityQueue<>();
         // PriorityQueue<DeathsQueue> DAB = new PriorityQueue<>();
@@ -85,12 +86,12 @@ public class COVID{
                 else
                 {
 
-
+                
                     // use comma as delimeter
                     String[] country = line.split(cvsSplitBy);
 
-
-
+                   
+                    
                     switch(Integer.parseInt(country[0]))
                     {
                         case 35://ontario
@@ -168,9 +169,9 @@ public class COVID{
                 }
             }
         }
-
+        
         //now we must calculate the number of cases/deaths per day as each entry in the csv is total to date
-
+        
         for(int i = ON.size()-1;i > 0;i--)
         {
             EntryADT up = new EntryADT(ON.get(i).getDate(), ON.get(i).getCase()-ON.get(i-1).getCase(), ON.get(i).getDeath()-ON.get(i-1).getDeath());
@@ -254,7 +255,7 @@ public class COVID{
         // for(int i = QB.size()-1;i > 0;i--) {
         //     CQB.add(new CasesQueue(QB.get(i).getDate(), QB.get(i).getCase()));
         // }
-
+        
         // System.out.println("Done for the QB priority queues for Cases");
 
 
@@ -262,7 +263,7 @@ public class COVID{
         //     CBC.add(new CasesQueue(BC.get(i).getDate(), BC.get(i).getCase()));
         // }
         // System.out.println("Done for the BC priority queues for Cases");
-
+        
 
         // for(int i = AB.size()-1;i > 0;i--) {
         //     CAB.add(new CasesQueue(AB.get(i).getDate(), AB.get(i).getCase()));
@@ -270,26 +271,26 @@ public class COVID{
 
         // System.out.println("Done for the AB priority queues for Cases");
 
-
+        
         // for(int i = SK.size()-1;i > 0;i--) {
         //     CSK.add(new CasesQueue(SK.get(i).getDate(), SK.get(i).getCase()));
         // }
 
         // System.out.println("Done for the SK priority queues for Cases");
 
-
+        
         // for(int i = MT.size()-1;i > 0;i--) {
         //     CMT.add(new CasesQueue(MT.get(i).getDate(), MT.get(i).getCase()));
         // }
 
         // System.out.println("Done for the MT priority queues for Cases");
 
-
+        
         // for(int i = NB.size()-1;i > 0;i--) {
         //     CNB.add(new CasesQueue(NB.get(i).getDate(), NB.get(i).getCase()));
         // }
         // System.out.println("Done for the NB priority queues for Cases");
-
+        
 
 
         // for(int i = NF.size()-1;i > 0;i--) {
@@ -299,14 +300,14 @@ public class COVID{
         // System.out.println("Done for the NF priority queues for Cases");
 
 
-
+        
         // for(int i = PE.size()-1;i > 0;i--)  {
         //     CPE.add(new CasesQueue(PE.get(i).getDate(), PE.get(i).getCase()));
         // }
 
         // System.out.println("Done for the PE priority queues for Cases");
 
-
+        
         // for(int i = NW.size()-1;i > 0;i--) {
         //     CNW.add(new CasesQueue(NW.get(i).getDate(), NW.get(i).getCase()));
         // }
@@ -314,18 +315,18 @@ public class COVID{
         // System.out.println("Done for the NW priority queues for Cases");
 
 
-
+        
         // for(int i = NV.size()-1;i > 0;i--) {
         //     CNV.add(new CasesQueue(NV.get(i).getDate(), NV.get(i).getCase()));
         // }
 
         // System.out.println("Done for the NV priority queues for Cases");
 
-
+        
         // for(int i = YK.size()-1;i > 0;i--) {
         //     CYK.add(new CasesQueue(YK.get(i).getDate(), YK.get(i).getCase()));
         // }
-
+        
 
         // System.out.println("Done for the YK priority queues for Cases");
 
@@ -337,7 +338,7 @@ public class COVID{
 
         // System.out.println("Done for the NS priority queues for Cases");
 
-
+        
         // for(int i = CAN.size()-1;i > 0;i--) {
         //     CCAN.add(new CasesQueue(CAN.get(i).getDate(), CAN.get(i).getCase()));
         // }
@@ -404,8 +405,8 @@ public class COVID{
         for(int i = CAN.size()-1;i > 0;i--) {
             DCAN.enqueue( CAN.get(i).getDeath(),CAN.get(i).getDate());
         }
-        
-        
+
+        //  System.out.println("Done for the CAN priority queues for Deaths");
         PriorityQueueADTArray CON = new PriorityQueueADTArray(ON.size());
         for(int i = ON.size()-1;i > 0;i--) {
             CON.enqueue( ON.get(i).getDeath(),ON.get(i).getDate());
@@ -463,10 +464,77 @@ public class COVID{
             CCAN.enqueue( CAN.get(i).getDeath(),CAN.get(i).getDate());
         }
 
-        //  System.out.println("Done for the CAN priority queues for Deaths");
-
-
         System.out.println("Done for the priority queues for deaths according to the provience");
+
+        //now we must grab the top entry for each province
+
+        PriorityQueueADTArray provDeath = new PriorityQueueADTArray(14);
+
+        provDeath.enqueue(DON.peek().getKey(), "Ontario,"+DON.peek().getValue());
+        provDeath.enqueue(DQB.peek().getKey(), "Quebec,"+DQB.peek().getValue());
+        provDeath.enqueue(DBC.peek().getKey(), "British Columbia,"+DBC.peek().getValue());
+        provDeath.enqueue(DAB.peek().getKey(), "Alberta,"+DAB.peek().getValue());
+        provDeath.enqueue(DSK.peek().getKey(), "Saskatchewan,"+DSK.peek().getValue());
+        provDeath.enqueue(DMT.peek().getKey(), "Manitoba,"+DMT.peek().getValue());
+        provDeath.enqueue(DNB.peek().getKey(), "New Brunswick,"+DNB.peek().getValue());
+        provDeath.enqueue(DNF.peek().getKey(), "Newfoundland,"+DNF.peek().getValue());
+        provDeath.enqueue(DPE.peek().getKey(), "Prince Edward Island,"+DPE.peek().getValue());
+        provDeath.enqueue(DNW.peek().getKey(), "Northwest Territories,"+DNW.peek().getValue());
+        provDeath.enqueue(DNV.peek().getKey(), "Nunavut,"+DNV.peek().getValue());
+        provDeath.enqueue(DYK.peek().getKey(), "Yukon,"+DYK.peek().getValue());
+        provDeath.enqueue(DNS.peek().getKey(), "Nova Scotia,"+DNS.peek().getValue());
+        provDeath.enqueue(DCAN.peek().getKey(), "Canada,"+DCAN.peek().getValue());
+
+        PriorityQueueADTArray provCase = new PriorityQueueADTArray(14);
+
+        provCase.enqueue(CON.peek().getKey(), "Onatrio,"+CON.peek().getValue());
+        provCase.enqueue(CQB.peek().getKey(), "Quebec,"+CQB.peek().getValue());
+        provCase.enqueue(CBC.peek().getKey(), "British Columbia,"+CBC.peek().getValue());
+        provCase.enqueue(CAB.peek().getKey(), "Alberta,"+CAB.peek().getValue());
+        provCase.enqueue(CSK.peek().getKey(), "Saskatchewan,"+CSK.peek().getValue());
+        provCase.enqueue(CMT.peek().getKey(), "Manitoba,"+CMT.peek().getValue());
+        provCase.enqueue(CNB.peek().getKey(), "New Brunswick,"+CNB.peek().getValue());
+        provCase.enqueue(CNF.peek().getKey(), "Newfoundland,"+CNF.peek().getValue());
+        provCase.enqueue(CPE.peek().getKey(), "Prince Edward Island,"+CPE.peek().getValue());
+        provCase.enqueue(CNW.peek().getKey(), "Northwest Territorries,"+CNW.peek().getValue());
+        provCase.enqueue(CNV.peek().getKey(), "Nunavut,"+CNV.peek().getValue());
+        provCase.enqueue(CYK.peek().getKey(), "Yukon,"+CYK.peek().getValue());
+        provCase.enqueue(CNS.peek().getKey(), "Nova Scotia,"+CNS.peek().getValue());
+        provCase.enqueue(CCAN.peek().getKey(), "Canada,"+CCAN.peek().getValue());
+        try{
+            File outFile = new File("Deaths.csv");
+            PrintWriter output = new PrintWriter(outFile);
+            output.printf("Province,Date,Deaths\n");
+            while(!provDeath.isEmpty())
+            {
+                EntryADTQueue temp = provDeath.dequeue();
+                output.printf(temp.getValue()+",%d\n",temp.getKey());
+            }
+
+            output.close();
+
+            outFile = new File("Cases.csv");
+            output = new PrintWriter(outFile);
+            output.printf("Province,Date,Cases\n");
+
+            while(!provCase.isEmpty())
+            {
+                EntryADTQueue temp = provCase.dequeue();
+                output.printf(temp.getValue()+",%d\n",temp.getKey());
+            }
+
+            output.close();
+        }
+        catch(FileNotFoundException fileEx)
+        {
+                
+        }
+
+       
+        
+        
+
+        
     }
 
 }
